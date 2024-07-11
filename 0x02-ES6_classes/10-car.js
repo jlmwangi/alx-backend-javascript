@@ -1,6 +1,6 @@
 export default class Car {
 	constructor(brand, motor, color) {
-		if (typeof brand && typeof motor && typeof color !== 'string') {
+		if (typeof brand !== 'string' || typeof motor !== 'string' || typeof color !== 'string') {
 			throw new TypeError('values must be strings');
 		}
 		this._brand = brand;
