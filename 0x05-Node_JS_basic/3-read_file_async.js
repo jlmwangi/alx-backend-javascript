@@ -1,36 +1,36 @@
 const fs = require('node:fs/promises');
 
-async function countStudents(path) {
-  try {
-    const data = await fs.readFile(path, { encoding: 'utf8' });
+function countStudents(path) {
+  return fs.readFile(path, { encoding: 'utf8' })
+    .then((data) => {
+      const lines = data.trim().split('\n');
 
-    const lines = data.trim().split('\n');
+      let countCs = 0;
+      let countSwe = 0;
+      const csStudents = [];
+      const sweStudents = [];
 
-    let countCs = 0;
-    let countSwe = 0;
-    const csStudents = [];
-    const sweStudents = [];
+      for (let i = 1; i < lines.length; i += 1) {
+        const [firstName, , , field] = lines[i].split(',');
 
-    for (let i = 1; i < lines.length; i += 1) {
-      const [firstName, , , field] = lines[i].split(',');
-
-      if (field === 'CS') {
-        countCs += 1;
-        csStudents.push(firstName);
-      } else if (field === 'SWE') {
-        countSwe += 1;
-        sweStudents.push(firstName);
+        if (field === 'CS') {
+          countCs += 1;
+          csStudents.push(firstName);
+        } else if (field === 'SWE') {
+          countSwe += 1;
+          sweStudents.push(firstName);
+        }
       }
-    }
 
-    console.log(`Number of students: ${countCs + countSwe}`);
+      console.log(`Number of students: ${countCs + countSwe}`);
 
-    console.log(`Number of students in CS: ${countCs}. List: ${csStudents.join(', ')}`);
-    console.log(`Number of students in SWE: ${countSwe}. List: ${sweStudents.join(', ')}`);
-  } catch (error) {
+      console.log(`Number of students in CS: ${countCs}. List: ${csStudents.join(', ')}`);
+      console.log(`Number of students in SWE: ${countSwe}. List: ${sweStudents.join(', ')}`);
+    })
+    .catch((error) => {
     // console.error(`Error loading: ${error.message}`);
-    throw new Error('Cannot load the database');
-  }
+      throw new Error('Cannot load the database');
+  });
 }
 
 // countStudents('path/to/file');
