@@ -25,14 +25,14 @@ function countStudents(path) {
 
     console.log(`Number of students: ${countCs + countSwe}`);
 
-    console.log(`Number of students in CS: ${countCs}. List: ${csStudents}`);
-    console.log(`Number of students in SWE: ${countSwe}. List: ${sweStudents}`);
+    console.log(`Number of students in CS: ${countCs}. List: ${csStudents.join(', ')}`);
+    console.log(`Number of students in SWE: ${countSwe}. List: ${sweStudents.join(', ')}`);
   } catch (error) {
-    //console.error(`Error loading: ${error.message}`);
+    // console.error(`Error loading: ${error.message}`);
     throw new Error('Cannot load the database');
   }
 }
 
-//countStudents('path/to/file');
+// countStudents('path/to/file');
 
 module.exports = countStudents;
