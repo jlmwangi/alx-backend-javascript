@@ -1,6 +1,6 @@
 function displayMessage(arg) {
-	console.log(arg);
-	return arg;
+  console.log(arg);
+  return arg;
 }
 
-module.exports = displayMessage
+module.exports = displayMessage;
