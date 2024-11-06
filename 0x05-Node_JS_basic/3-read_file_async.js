@@ -23,11 +23,13 @@ function countStudents(path) {
           }
         }
 
-        console.log(`Number of students: ${countCs + countSwe}`);
-        console.log(`Number of students in CS: ${countCs}. List: ${csStudents.join(', ')}`);
-        console.log(`Number of students in SWE: ${countSwe}. List: ${sweStudents.join(', ')}`);
+	const output = [
+		`Number of students: ${countCs + countSwe}`,
+		`Number of students in CS: ${countCs}. List: ${csStudents.join(', ')}`,
+		`Number of students in SWE: ${countSwe}. List: ${sweStudents.join(', ')}`,
+	].join('\n');
 
-        resolve();
+        resolve(output);
       })
       .catch(() => {
         reject(new Error('Cannot load the database'));
