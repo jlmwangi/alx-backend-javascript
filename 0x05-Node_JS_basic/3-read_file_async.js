@@ -23,11 +23,11 @@ function countStudents(path) {
           }
         }
 
-	const output = [
-		`Number of students: ${countCs + countSwe}`,
-		`Number of students in CS: ${countCs}. List: ${csStudents.join(', ')}`,
-		`Number of students in SWE: ${countSwe}. List: ${sweStudents.join(', ')}`,
-	].join('\n');
+        const output = [
+          `Number of students: ${countCs + countSwe}`,
+          `Number of students in CS: ${countCs}. List: ${csStudents.join(', ')}`,
+          `Number of students in SWE: ${countSwe}. List: ${sweStudents.join(', ')}`,
+        ].join('\n');
 
         resolve(output);
       })

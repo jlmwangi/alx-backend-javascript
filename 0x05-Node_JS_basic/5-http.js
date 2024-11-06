@@ -1,4 +1,5 @@
 const http = require('http');
+const countStudents = require('./3-read_file_async');
 
 const app = http.createServer(async (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -8,7 +9,7 @@ const app = http.createServer(async (req, res) => {
     res.end();
   } else if (req.url === '/students') {
     res.write('This is the list of our students\n');
-    const countStudents = require('./3-read_file_async');
+    // const countStudents = require('./3-read_file_async');
     try {
       // res.write('This is the list of our students\n');
       const studentInfo = await countStudents(process.argv[2]);
