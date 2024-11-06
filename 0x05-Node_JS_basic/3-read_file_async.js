@@ -29,6 +29,8 @@ function countStudents(path) {
           `Number of students in SWE: ${countSwe}. List: ${sweStudents.join(', ')}`,
         ].join('\n');
 
+	console.log(output);
+
         resolve(output);
       })
       .catch(() => {
